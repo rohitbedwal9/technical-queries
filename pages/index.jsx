@@ -4,18 +4,8 @@ import Date from "../components/date"
 import Layout, { siteTitle} from "../components/layout"
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
-import { GetStaticProps } from 'next'
  
-export default function Home({
-  allPostsData
-}: {
-  allPostsData: {
-    date: string
-    title: string
-    id: string
-  }[]
-}) 
-{
+export default function Home({allPostsData}){
   return (
     <Layout home>
       <Head>
@@ -23,7 +13,7 @@ export default function Home({
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
-          Hello, readers, We're a team of a Social Media Agency. You can contact
+          Hello, readers, we are a team of a Social Media Agency. You can contact
           us on{" "}
           <Link href="https://instagram.com/technicalqueries">
             <a className={utilStyles.instagram}>Instagram</a>
@@ -54,7 +44,7 @@ export default function Home({
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export  async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
     props: {
